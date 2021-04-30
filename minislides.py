@@ -8,10 +8,6 @@ import argparse
 parser = argparse.ArgumentParser(description="Generate html/css slides from a markdown file")
 parser.add_argument("source", help="your markdown source file")
 parser.add_argument("-o" ,"--output", default="", help="destination file for html output")
-parser.add_argument("-t" ,"--title", default="Slides", help="the title of your presentation")
-parser.add_argument("-s" ,"--subtitle", default="", help="the subtitle")
-parser.add_argument("-a" ,"--author", default="", help="the author name(s)")
-parser.add_argument("-f" ,"--affiliation", default="", help="the affiliation text below the author")
 parser.add_argument("-c" ,"--centered", action="store_true", help="center all slide content")
 parser.add_argument("-n" ,"--numbered", action="store_true", help="show slide numbers")
 parser.add_argument("--notitle", action="store_true", help="suppress the title slide")
@@ -33,8 +29,40 @@ with open(args.source, "r") as f:
 
 # Split the markdown file into slides
 blocks = text.split("\n---\n")
-# Parse as GitHib flavoured markdown
-converted_blocks = map(gfm.convert, blocks)
+# Peel off header
+header = blocks[0]
+
+# Set default title slide information
+title = "Slides"
+subtitle = ""
+author = ""
+affiliation = ""
+
+# Read the markdown header
+for line in header.splitlines():
+    line = line.strip()
+    if line.startswith("title"):
+        title = line.split(":", 1)[1].strip()
+    elif line.startswith("subtitle"):
+        subtitle = line.split(":", 1)[1].strip()
+    elif line.startswith("author"):
+        author = line.split(":", 1)[1].strip()
+    elif line.startswith("affiliation"):
+        affiliation = line.split(":", 1)[1].strip()
+
+# Build title slide
+if not args.notitle:
+    titlesection = f"""
+        <section>
+            <h1>{title}</h1>
+            <p class="subtitle">{subtitle}</p>
+            <p class="author">{author}</p>
+            <p class="affiliation">{affiliation}</p>
+        </section>
+    """
+
+# Parse remaining blocks as GitHib flavoured markdown
+converted_blocks = map(gfm.convert, blocks[1:])
 
 # Wrap each slide as a section and join them
 def wrap_section(s):
@@ -42,18 +70,9 @@ def wrap_section(s):
 sections = ''.join(map(wrap_section, converted_blocks))
 # Strip out <p></p> surrounding image tags
 sections = re.sub(r"<p>(<img[\s\S]*?)</p>", r"\1", sections)
+# Add the tile slide to the beginning
+sections = titlesection + sections
 
-# Build title slide
-if not args.notitle:
-    titlesection = f"""
-        <section>
-            <h1>{args.title}</h1>
-            <p class="subtitle">{args.subtitle}</p>
-            <p class="author">{args.author}</p>
-            <p class="affiliation">{args.affiliation}</p>
-        </section>
-    """
-    sections = titlesection + sections
 
 # Set the css and js contents
 minislides = """
@@ -77,7 +96,7 @@ html = f"""
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{args.title}</title>
+        <title>{title}</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/tomorrow.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>

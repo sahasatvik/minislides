@@ -16,8 +16,16 @@ pip install marko
 ## Writing a presentation
 The [demo.md](demo.md) demonstrates the format for writing slides. Use [GitHub flavored markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet),
 separating slides with `---` surrounded by blank lines.
+You should also specify a header including the title slide information, as follows.
 
 ```markdown
+title: A snappy title
+subtitle: Additional information
+author: John Doe
+affiliation: Unseen University
+
+---
+
 ## Slide 1
 
 This is a sentence.
@@ -34,7 +42,7 @@ The demo also shows how to use raw HTML tags in your markdown.
 ### Compiling to HTML
 Run `./minislides.py -h` (make sure you are using python3) to get a list of available options.
 ```
-usage: minislides.py [-h] [-o OUTPUT] [-t TITLE] [-s SUBTITLE] [-a AUTHOR] [-f AFFILIATION] [-c] [-n] [--notitle] source
+usage: minislides.py [-h] [-o OUTPUT] [-c] [-n] [--notitle] source
 
 Generate html/css slides from a markdown file
 
@@ -45,14 +53,6 @@ optional arguments:
   -h, --help            show this help message and exit
   -o OUTPUT, --output OUTPUT
                         destination file for html output
-  -t TITLE, --title TITLE
-                        the title of your presentation
-  -s SUBTITLE, --subtitle SUBTITLE
-                        the subtitle
-  -a AUTHOR, --author AUTHOR
-                        the author name(s)
-  -f AFFILIATION, --affiliation AFFILIATION
-                        the affiliation text below the author
   -c, --centered        center all slide content
   -n, --numbered        show slide numbers
   --notitle             suppress the title slide
@@ -60,14 +60,7 @@ optional arguments:
 
 The command used to compile the demo presentation was 
 ```sh 
-./minislides.py \
-        --title "A brief demonstration of minislides" \
-        --subtitle "Simple presentations using HTML/CSS" \
-        --author "Satvik Saha" \
-        --affiliation "Indian Institute of Science Education and Research, Kolkata" \
-        --numbered \
-        --output demo.html \
-        demo.md
+./minislides.py --numbered demo.md --output demo.html
 ```
 
 ### Navigation
