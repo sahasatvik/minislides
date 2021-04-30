@@ -82,7 +82,19 @@ body {
     color: var(--text-dark);
 }
 
-.slides .center {
+.slides.centered h1, .slides section.centered h1,
+.slides.centered h2, .slides section.centered h2,
+.slides.centered h3, .slides section.centered h3,
+.slides.centered p, .slides section.centered p,
+.slides.centered ul, .slides section.centered ul,
+.slides.centered ol, .slides section.centered ol,
+.slides.centered blockquote, .slides section.centered blockquote {
+    text-align: center;
+    width: auto;
+    max-width: 70%;
+}
+
+.slides .centered {
     text-align: center;
 }
 
