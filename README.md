@@ -4,7 +4,7 @@ This is a very minimal setup for displaying a deck of presentation slides in the
 Navigation using arrow keys is built in.
 
 Take a look at this [demo](https://sahasatvik.github.io/minislides/).
-This only works on a wide screen!
+This only works well on a landscape screen! You may have to zoom in or out to correctly scale the text, depending on your screen size.
 
 These slides print to pdf best in Chrome. Make sure to print in A4 landscape, remove headers and footers, and set margins to 'none'.
 You can choose to include background graphics to keep the slide background colour.
