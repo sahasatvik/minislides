@@ -70,6 +70,8 @@ The command used to compile the demo presentation was
         demo.md
 ```
 
+The `minislides.css` and `navigation.js` files must be in the same directory from which you are running the script!
+
 
 ### Navigation
 Navigation using arrow keys is built in using javascript.
