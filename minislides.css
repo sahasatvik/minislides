@@ -82,6 +82,10 @@ body {
     color: var(--text-dark);
 }
 
+.slides .center {
+    text-align: center;
+}
+
 .slides h1 {
     padding: 0 0 1rem 0;
     font-size: 3rem;
@@ -159,8 +163,8 @@ body {
     font-family: 'Fira Code', monospace;
     background: none;
 }
-.slides p > code {
-    font-size: 1.3rem;
+.slides p code {
+    font-size: 1.2rem;
     color: var(--blue);
 }
 .slides pre code {
