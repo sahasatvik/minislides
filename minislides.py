@@ -41,7 +41,7 @@ def wrap_section(s):
     return "<section>\n" + s + "</section>\n"
 sections = ''.join(map(wrap_section, converted_blocks))
 # Strip out <p></p> surrounding image tags
-sections = re.sub(r"<p>(<img.*)</p>", r"\1", sections)
+sections = re.sub(r"<p>(<img[\s\S]*?)</p>", r"\1", sections)
 
 # Build title slide
 if not args.notitle:
