@@ -15,8 +15,8 @@
 <body>
     <div class="slides numbered">
         <section>
-            <h1>Title of our presentation, may spill over into multiple lines</h1>
-            <p class="subtitle">A short subtitle</p>
+            <h1>A brief demonstration of minislides</h1>
+            <p class="subtitle">Simple presentations using HTML/CSS</p>
             <p class="author">Satvik Saha</p>
             <p class="institute">Indian Institute of Science Education and Research, Kolkata</p>
         </section>
@@ -31,23 +31,23 @@
         </section>
         <section>
             <h2>Second slide</h2>
-            <p>Some more text, followed by some code in <code>python</code>.</p>
-            <pre><code class="python">from numpy import *
-
-def square(x):
-    return x * x
-
-print "Square of 100" + square(100)</code></pre>
-            <p>Dolor reiciendis earum voluptas sed sapiente unde Aliquam
-            nesciunt hic quibusdam perspiciatis laborum repudiandae cupiditate
-            saepe. Earum amet officia modi?</p>
+            <p>This slide contains some code written in <code>python</code>.</p>
+            <pre><code class="python">def fibonacci(n):
+    a, b = 0, 1
+    for i in range(n):
+        a, b = b, a + b
+        yield a</code></pre>
+            <p>The above function simply generates the first <em>n</em> fibonacci numbers.
+            Note the use of the <code>yield a</code> statement.</p>
         </section>
         <section>
             <h2>Third slide</h2>
-            <p>This is some math: \(x^2 + y^2 = z^2\).</p>
-            <h3>Cauchy's Formula</h3>
-            <p> \[
-                \frac{1}{2\pi i}\oint_\gamma \frac{f(z)}{z - z_0}\:dz = f(z_0).
+            <p> This slide demonstrates the use of math expressions, supported by MathJax.</p>
+            <h3>Cauchy's Integral Formula</h3>
+            <p> Let \(U\) be an open subset of the complex plane, and let \(D\) be a closed disk completely contained in \(U\).
+            Let \(f\) be a holomorphic function on \(U\), and let \(\gamma\) be the circle oriented counter-clockwise forming the boundary of \(D\).
+            Then for every \(z_0\) in the interior of \(D\), \[
+                f(z_0) = \frac{1}{2\pi i}\oint_\gamma \frac{f(z)}{z - z_0}\:dz.
             \]</p>
         </section>
         <section>
@@ -68,8 +68,8 @@ print "Square of 100" + square(100)</code></pre>
         </section>
         <section>
             <h2>Fifth slide</h2>
-            <img src="https://source.unsplash.com/featured/?nature,water" alt="">
-            <p>This slide contains a random image from <a href="https://unsplash.com">unsplash</a>.</p>
+            <img src="https://source.unsplash.com/featured/?nature" alt="">
+            <p class="center">This slide contains a random image from <a href="https://unsplash.com">unsplash</a>.</p>
         </section>
         <section>
             <img class="large" src="https://source.unsplash.com/featured/?space" alt="">
