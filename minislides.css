@@ -205,3 +205,6 @@ body {
 .slides thead {
     border-bottom: 2px solid var(--text-dark);
 }
+.katex {
+    font-size: 1.07em !important;
+}

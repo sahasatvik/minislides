@@ -45,12 +45,12 @@ The `with open(...) as f` construct ensures that the file is closed after readin
 
 ## Math expressions
 
-This slide demonstrates the use of math expressions, supported by MathJax.
+This slide demonstrates the use of math expressions, supported by $\KaTeX$.
 
 ### Cauchy's Integral Formula
-Let \\(U\\) be an open subset of the complex plane, and let \\(D\\) be a closed disk completely contained in \\(U\\).
-Let \\(f\\) be a holomorphic function on \\(U\\), and let \\(\\gamma\\) be the circle oriented counter-clockwise forming the boundary of \\(D\\).
-Then for every \\(z_0\\) in the interior of \\(D\\), \\[
+Let $U$ be an open subset of the complex plane, and let $D$ be a closed disk completely contained in $U$.
+Let $f$ be a holomorphic function on $U$, and let $\\gamma$ be the circle oriented counter-clockwise forming the boundary of $D$.
+Then for every $z_0$ in the interior of $D$, \\[
     f(z_0) = \\frac{1}{2\\pi i}\\oint_\\gamma \\frac{f(z)}{z - z_0}\\:dz.
 \\]
 
