@@ -122,7 +122,7 @@ body {
 
 .slides h2 {
     font-size: 2rem;
-    margin: 0 0 1.5rem 0;
+    margin: 1.5rem 0;
 }
 .slides h3 {
     font-size: 1.7rem;
@@ -152,17 +152,14 @@ body {
     font-style: italic;
 }
 
-.slides i {
+.slides i,
+.slides em {
     color: var(--green);
 }
 
-.slides em {
+.slides b,
+.slides strong {
     color: var(--orange);
-    font-style: normal;
-}
-
-.slides b {
-    color: var(--blue);
 }
 
 .slides a {
@@ -203,12 +200,8 @@ body {
 
 .slides th,
 .slides td {
-    text-align: center;
     padding: 0.2rem 0.5rem;
 }
-.slides tr:nth-child(1) th {
+.slides thead {
     border-bottom: 2px solid var(--text-dark);
-}
-.slides tr:nth-child(2) td {
-    padding-top: 0.6rem;
 }
