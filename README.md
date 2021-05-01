@@ -6,6 +6,11 @@ Take a look at this [demo](https://sahasatvik.github.io/minislides/demo.html) pr
 Note that this only works well on a landscape screen! You may have to zoom in or out to correctly scale the text, depending on your screen size.
 Compare with the input markdown file, [demo.md](demo.md).
 
+Here's the title slide of the demo.
+![0001](https://user-images.githubusercontent.com/16478483/116789159-1f96ed80-aacb-11eb-8f9a-ef9f4af2dd6b.jpg)
+![image](https://user-images.githubusercontent.com/16478483/116789193-48b77e00-aacb-11eb-9a32-978601d9f3c8.jpeg)
+
+
 ### Dependencies
 The `minislides.py` script uses the [marko](https://github.com/frostming/marko) library for parsing markdown.
 Install it using 
