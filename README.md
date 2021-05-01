@@ -42,7 +42,7 @@ The demo also shows how to use raw HTML tags in your markdown.
 ### Compiling to HTML
 Run `./minislides.py -h` (make sure you are using python3) to get a list of available options.
 ```
-usage: minislides.py [-h] [-o OUTPUT] [-c] [-n] [--notitle] source
+usage: minislides [-h] [-o OUTPUT] [-c] [-n] [--notitle] [--css CSS] [--js JS] source
 
 Generate html/css slides from a markdown file
 
@@ -56,6 +56,8 @@ optional arguments:
   -c, --centered        center all slide content
   -n, --numbered        show slide numbers
   --notitle             suppress the title slide
+  --css CSS             .css file for additional styling
+  --js JS               .js file for additional functionality
 ```
 
 The command used to compile the demo presentation was 

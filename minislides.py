@@ -11,6 +11,8 @@ parser.add_argument("-o" ,"--output", default="", help="destination file for htm
 parser.add_argument("-c" ,"--centered", action="store_true", help="center all slide content")
 parser.add_argument("-n" ,"--numbered", action="store_true", help="show slide numbers")
 parser.add_argument("--notitle", action="store_true", help="suppress the title slide")
+parser.add_argument("--css", default="", help=".css file for additional styling")
+parser.add_argument("--js", default="", help=".js file for additional functionality")
 args = parser.parse_args()
 
 # Set css classes for centering and numbering
@@ -76,7 +78,7 @@ sections = re.sub(r"<p>(<img[\s\S]*?)</p>", r"\1", sections)
 sections = titlesection + sections
 
 
-# Set the css and js contents
+# Set the minified css and js contents
 minislides = """
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Basic:ital,wght@0,400;0,700;1,400;1,700&display=swap');@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');:root{--background-light: #fdfdfd;--text-dark: #101010;--blue: #4271ae;--green: #718c00;--orange: #f5871f;--gray-light: #bbbbbb;}*{margin: 0;padding: 0;}body{background: gray;}.slides section{position: relative;box-sizing: border-box;background: var(--background-light);margin: 16px auto 8px auto;padding: 4rem;height: calc(100vh - 16px);width: calc(100vh * 1.414);display: flex;flex-direction: column;justify-content: center;align-items: center;font-family: 'Gentium Basic', serif;}.slides section:nth-child(1){margin-top: 8px;}.slides.numbered{counter-reset: section;}.slides.numbered section::after{position: absolute;bottom: 1rem;right: 1.5rem;counter-increment: section;content: counter(section);font-size: 1rem;color: var(--text-dark);opacity: 0.7;}.slides.numbered section:nth-child(1)::after{counter-increment: none;content: '';}@media print {.slides section { margin: 0 !important;height: 100vh;width: auto;page-break-after: always;page-break-inside: avoid;}}.slides h1,.slides h2,.slides h3,.slides p,.slides ul,.slides ol,.slides blockquote{text-align: left;width: 70%;color: var(--text-dark);}.slides.centered h1, .slides section.centered h1,.slides.centered h2, .slides section.centered h2,.slides.centered h3, .slides section.centered h3,.slides.centered p, .slides section.centered p,.slides.centered ul, .slides section.centered ul,.slides.centered ol, .slides section.centered ol,.slides.centered blockquote, .slides section.centered blockquote{text-align: center;width: auto;max-width: 70%;}.slides .centered{text-align: center;}.slides h1{padding: 0 0 1rem 0;font-size: 3rem;opacity: 0.85;box-shadow: inset 0 -3px var(--orange);}.slides .subtitle{margin: 1rem 0;font-size: 1.5rem;opacity: 0.7;}.slides .author{margin: 4rem 0 0 0;font-size: 1.9rem;font-style: italic;}.slides .affiliation{margin: 0.1rem 0;font-style: italic;opacity: 0.7;}.slides h2{font-size: 2rem;margin: 1.5rem 0;}.slides h3{font-size: 1.7rem;margin: 1rem 0 0.5rem 0;}.slides p{font-size: 1.5rem;margin: 0.5rem 0;line-height: 1.4em;}.slides ul,.slides ol{font-size: 1.5rem;margin: 0.3rem 0;line-height: 1.2em;}.slides blockquote{margin: 1rem 0;box-shadow: inset 8px 0 var(--gray-light);}.slides blockquote p{width: auto;padding-left: 6ch;opacity: 0.9;font-style: italic;}.slides i,.slides em{color: var(--green);}.slides b,.slides strong{color: var(--orange);}.slides a{text-decoration: none;color: var(--blue);}.slides code,.slides pre{font-family: 'Fira Code', monospace;background: none;}.slides p code{font-size: 1.2rem;color: var(--blue);}.slides pre code{font-size: 1.2rem;margin: 1rem 0;}.slides img{max-width: 70%;max-height: 80%;margin: 1rem 0;}.slides img.large{max-width: 100%;max-height: 100%;}.slides table{font-size: 1.5rem;margin: 1rem 0;overflow: scroll;border-collapse: collapse;}.slides th,.slides td{padding: 0.2rem 0.5rem;}.slides thead{border-bottom: 2px solid var(--text-dark);}.katex{font-size: 1.07em !important;}
 """
@@ -91,6 +93,17 @@ window.scrollTo(0,slides[target].offsetTop-8);}
 document.addEventListener("keydown",event=>{let code=event.keyCode;let currentSlide=getCurrentSlide();if(prev.includes(code)){navigate(currentSlide-1);}else if(next.includes(code)){navigate(currentSlide+1);}else if(start.includes(code)){navigate(0);}else if(end.includes(code)){navigate(totalSlides-1);}});
 """
 
+# Get the additional css and js files
+css = ""
+js = ""
+if args.css:
+    with open(args.css, "r") as f:
+        css = f.read()
+if args.js:
+    with open(args.js, "r") as f:
+        js = f.read()
+
+# Katex settings
 katex = r"""
     document.addEventListener("DOMContentLoaded", function() {
         renderMathInElement(document.body, {
@@ -121,6 +134,7 @@ html = f"""
 
         <style type="text/css" media="all">
             {minislides}    
+            {css}
         </style>
     </head>
     <body>
@@ -131,6 +145,7 @@ html = f"""
             hljs.highlightAll();
             {katex}
             {navigation}
+            {js}
         </script>
     </body>
     </html>
