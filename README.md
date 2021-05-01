@@ -14,30 +14,49 @@ pip install marko
 ```
 
 ## Writing a presentation
-The [demo.md](demo.md) demonstrates the format for writing slides. Use [GitHub flavored markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet),
-separating slides with `---` surrounded by blank lines.
-You should also specify a header including the title slide information, as follows.
+The [demo.md](demo.md) demonstrates the format for writing slides, along with a few additional features of the default css style.
+Use [GitHub flavored markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet), separating slides with `---` surrounded by blank lines.
+You should also specify a header including the title slide information, as in the following example.
 
-```markdown
-title: A snappy title
-subtitle: Additional information
+````markdown
+title: Quickstart
+subtitle: A short demo of minislides
 author: John Doe
 affiliation: Unseen University
 
 ---
 
-## Slide 1
+## Title of your first slide!
 
-This is a sentence.
+This is a sentence, on its own paragraph.
+
+You can use the usual markdown features, like **bold** and _italicized_ text.
 
 ---
 
-## Slide 2
+## Your second slide.
 
-More text, **bold** and _italicized_.
+Including [hyperlinks](https://github.com) and images is simple.
+
+![Random image](https://source.unsplash.com/random)
+
+---
+
+Code highlighting is supported by [highlight.js](https://highlightjs.org), and math is supported
+using $\KaTeX$.
+
+```python
+a, b = 0, 1
+for i in range(20):
+    a, b = b, a + b
+    print(a)
 ```
 
-The demo also shows how to use raw HTML tags in your markdown.
+This prints the Fibonacci numbers, which satisfy $$
+  F_n = F_{n - 1} + F_{n - 2}.
+$$
+
+````
 
 ### Compiling to HTML
 Run `./minislides.py -h` (make sure you are using python3) to get a list of available options.
@@ -60,10 +79,16 @@ optional arguments:
   --js JS               .js file for additional functionality
 ```
 
-The command used to compile the demo presentation was 
-```sh 
-./minislides.py --numbered demo.md --output demo.html
+Suppose that the example code above was saved as `quickstart.md`. To compile this to HTML, with slide numbers, run
 ```
+./minislides.py -n quickstart.md -o quickstart.html
+```
+Now, you can open `quickstart.html` in your browser of choice and start presenting!
+Here's what the slides look like.
+![quickstart-1](https://user-images.githubusercontent.com/16478483/116784479-0cc3ef00-aab2-11eb-87ee-a487ca4f0034.jpg)
+![quickstart-2](https://user-images.githubusercontent.com/16478483/116784491-13eafd00-aab2-11eb-9074-45b367d94373.jpg)
+![quickstart-3](https://user-images.githubusercontent.com/16478483/116784493-18171a80-aab2-11eb-832c-8a20933502f5.jpg)
+![quickstart-4](https://user-images.githubusercontent.com/16478483/116784571-98d61680-aab2-11eb-94c8-8c823d021147.jpg)
 
 ### Navigation
 Navigation using arrow keys is built in using javascript.
