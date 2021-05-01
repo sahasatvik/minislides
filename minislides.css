@@ -26,7 +26,7 @@ body {
     margin: 16px auto 8px auto;
     padding: 2rem;
     height: calc(100vh - 16px);
-    width: calc(100vh * 1.414);
+    width: calc((100vh - 16px) * 1.414);
     max-width: calc(100vw - 16px);
     display: flex;
     flex-direction: column;
@@ -69,10 +69,13 @@ body {
 }
 
 @media print {
+    body {
+        background: var(--background-light);
+    }
     .slides section {
         margin: 0 !important;
-        height: 100vh;
-        width: auto;
+        height: 100vh !important;
+        width: 100% !important;
         page-break-after: always;
         page-break-inside: avoid;
     }
