@@ -3,8 +3,9 @@
 This is a script for parsing markdown files into minimal HTML/CSS slide decks, which can be presented in the browser.
 
 Take a look at this [demo](https://sahasatvik.github.io/minislides/demo.html) presentation.
-Note that this only works well on a landscape screen! You may have to zoom in or out to correctly scale the text, depending on your screen size.
-Compare with the input markdown file, [demo.md](demo.md).
+Use the forward and backward arrow keys for navigating between slides.
+You can zoom in or out to scale the content as you wish, depending on your screen size.
+Compare with the input markdown file, [demo.md](demo.md) (look at the raw file).
 
 Here's the title slide of the demo.
 ![Title](https://user-images.githubusercontent.com/16478483/116789159-1f96ed80-aacb-11eb-8f9a-ef9f4af2dd6b.jpg)
@@ -92,7 +93,7 @@ Here's what the slides look like.
 
 
 ### Navigation
-Navigation using arrow keys is built in using javascript.
+Basic keyboard is built into the HTML/CSS slides using javascript.
 Use the forward and backward arrow keys (or `j` and `k` if you prefer vim keybindings) to change slides.
 Press `0` or `9` to jump to the start or end of the presentation respectively.
 
