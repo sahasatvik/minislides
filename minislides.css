@@ -24,9 +24,10 @@ body {
     box-sizing: border-box;
     background: var(--background-light);
     margin: 16px auto 8px auto;
-    padding: 4rem;
+    padding: 2rem;
     height: calc(100vh - 16px);
     width: calc(100vh * 1.414);
+    max-width: calc(100vw - 16px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,6 +38,13 @@ body {
 
 .slides section:nth-child(1) {
     margin-top: 8px;
+}
+
+@media (max-width: 600px), (max-height: 500px) {
+    .slides section {
+        height: auto;
+        min-height: calc(100vh - 16px);
+    }
 }
 
 .slides.numbered {
@@ -78,8 +86,26 @@ body {
 .slides ol,
 .slides blockquote {
     text-align: left;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
     width: 70%;
+    max-width: 70%;
     color: var(--text-dark);
+}
+
+@media (max-width: 500px) {
+    .slides h1,
+    .slides h2,
+    .slides h3,
+    .slides p,
+    .slides ul,
+    .slides ol,
+    .slides blockquote {
+        width: 90%;
+        max-width: 90%;
+    }
 }
 
 .slides.centered h1, .slides section.centered h1,
@@ -91,7 +117,6 @@ body {
 .slides.centered blockquote, .slides section.centered blockquote {
     text-align: center;
     width: auto;
-    max-width: 70%;
 }
 
 .slides .centered {
@@ -176,9 +201,13 @@ body {
     font-size: 1.2rem;
     color: var(--blue);
 }
+.slides pre {
+    max-width: 100%;
+}
 .slides pre code {
     font-size: 1.2rem;
     margin: 1rem 0;
+    overflow-x: scroll;
 }
 
 .slides img {
