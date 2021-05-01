@@ -7,9 +7,7 @@ Note that this only works well on a landscape screen! You may have to zoom in or
 Compare with the input markdown file, [demo.md](demo.md).
 
 Here's the title slide of the demo.
-![0001](https://user-images.githubusercontent.com/16478483/116789159-1f96ed80-aacb-11eb-8f9a-ef9f4af2dd6b.jpg)
-![image](https://user-images.githubusercontent.com/16478483/116789193-48b77e00-aacb-11eb-9a32-978601d9f3c8.jpeg)
-
+![Title](https://user-images.githubusercontent.com/16478483/116789159-1f96ed80-aacb-11eb-8f9a-ef9f4af2dd6b.jpg)
 
 ### Dependencies
 The `minislides.py` script uses the [marko](https://github.com/frostming/marko) library for parsing markdown.
@@ -90,10 +88,8 @@ Suppose that the example code above was saved as `quickstart.md`. To compile thi
 ```
 Now, you can open `quickstart.html` in your browser of choice and start presenting!
 Here's what the slides look like.
-![quickstart-1](https://user-images.githubusercontent.com/16478483/116784479-0cc3ef00-aab2-11eb-87ee-a487ca4f0034.jpg)
-![quickstart-2](https://user-images.githubusercontent.com/16478483/116784491-13eafd00-aab2-11eb-9074-45b367d94373.jpg)
-![quickstart-3](https://user-images.githubusercontent.com/16478483/116784493-18171a80-aab2-11eb-832c-8a20933502f5.jpg)
-![quickstart-4](https://user-images.githubusercontent.com/16478483/116784571-98d61680-aab2-11eb-94c8-8c823d021147.jpg)
+![Quickstart](https://user-images.githubusercontent.com/16478483/116789320-eca12980-aacb-11eb-999e-819b1aaefccf.jpeg)
+
 
 ### Navigation
 Navigation using arrow keys is built in using javascript.
