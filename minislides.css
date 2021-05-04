@@ -122,7 +122,7 @@ body {
     width: auto;
 }
 
-.slides .centered {
+.slides section .centered {
     text-align: center;
 }
 
@@ -205,6 +205,7 @@ body {
     color: var(--blue);
 }
 .slides pre {
+    text-align: left;
     max-width: 100%;
 }
 .slides pre code {

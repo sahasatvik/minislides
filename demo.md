@@ -58,6 +58,30 @@ Then for every $z_0$ in the interior of $D$, \\[
 ---
 
 
+## Centering
+
+You can use the `center` keyword _immediately_ after beginning a slide in your markdown to center all content within it, like in the "Images" slide.
+```markdown
+--- 
+center
+
+# Centered slide
+
+Everything is centered here.
+```
+
+Alternatively, use raw tags with the `centered` class to center individual headings, paragraphs, and lists within a slide.
+
+```html
+<p class="centered">This is centered text</p>
+```
+
+Note that markdown syntax does not work within raw HTML tags!
+
+
+---
+
+
 ## Lists
 
 This is an unordered list.
@@ -88,17 +112,25 @@ This is an ordered list
 
 
 ---
+center
 
 
 ## Images
 
-<p class="centered">
 This is a random image from <a href="https://source.unsplash.com">unsplash</a>.
-</p>
 
 ![Nature](https://source.unsplash.com/featured/?nature)
 
-<p class="centered">The next slide shows a large image</p>
+
+---
+
+
+The next slide shows a large image. Do this by using a raw image tag with the `large` class.
+```html
+<img class="large" 
+    src="https://source.unsplash.com/featured/?space" 
+    alt="This is a large image">
+```
 
 
 ---
@@ -107,19 +139,3 @@ This is a random image from <a href="https://source.unsplash.com">unsplash</a>.
 <img class="large" src="https://source.unsplash.com/featured/?space" alt="">
 
 
----
-
-
-## Using raw HTML tags
-
-The previous two slides contained raw paragraph and image tags in the markdown source, to center text and specify a large image.
-
-```html
-<p class="centered">This is centered text</p>
-
-<img class="large" 
-    src="https://source.unsplash.com/featured/?space" 
-    alt="This is a large image">
-```
-
-Note that markdown syntax does not work within raw HTML tags!
