@@ -198,10 +198,12 @@ body {
 .slides code,
 .slides pre {
     font-family: 'Fira Code', monospace;
+    font-size: 1.2rem;
     background: none;
 }
-.slides p code {
-    font-size: 1.2rem;
+.slides p code,
+.slides ul code,
+.slides ol code {
     color: var(--blue);
 }
 .slides pre {
@@ -209,7 +211,6 @@ body {
     max-width: 100%;
 }
 .slides pre code {
-    font-size: 1.2rem;
     margin: 1rem 0;
     overflow-x: scroll;
 }
